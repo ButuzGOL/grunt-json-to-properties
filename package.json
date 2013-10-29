@@ -1,6 +1,6 @@
 {
   "name": "grunt-json-to-properties",
-  "description": "Converts json to properties",
+  "description": "Grunt plugin for converting json to properties",
   "version": "0.1.0",
   "homepage": "https://github.com/stregub/grunt-json-to-properties",
   "author": {

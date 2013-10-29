@@ -1,6 +1,6 @@
 # grunt-json-to-properties
 
-> Converts json to properties
+> Grunt plugin for converting json to properties
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
