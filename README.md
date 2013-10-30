@@ -25,9 +25,6 @@ In your project's Gruntfile, add a section named `json_to_properties` to the dat
 ```js
 grunt.initConfig({
   json_to_properties: {
-    options: {
-      // Task-specific options go here.
-    },
     your_target: {
       // Target-specific file lists and/or options go here.
     },
@@ -35,46 +32,14 @@ grunt.initConfig({
 })
 ```
 
-### Options
-
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used to do something with whatever. So if the `testing` file has the content `{ "a": "b", "c": { "d": "e" } }` and the `123` file had the content `{ "a": "b", "c": { "d": "e" } }`, the generated result would be `a = b\nc.d = e\na1 = b1\nc1.d1 = e1`
 
 ```js
 grunt.initConfig({
   json_to_properties: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  json_to_properties: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
     files: {
       'dest/default_options': ['src/testing', 'src/123'],
     },

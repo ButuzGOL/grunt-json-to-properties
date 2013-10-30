@@ -8,16 +8,16 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+var _ = require('lodash'),
+    properties = require('properties');
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+_.mixin(require('underscore.deep'));
+
+module.exports = function(grunt) {
 
   grunt.registerMultiTask('json_to_properties', 'Converts json to properties', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
     });
 
     // Iterate over all specified file groups.
@@ -34,16 +34,21 @@ module.exports = function(grunt) {
       }).map(function(filepath) {
         // Read file source.
         return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+      });
 
-      // Handle options.
-      src += options.punctuation;
+      var result = [];
+
+      if (src.length) {
+        src.forEach(function(content) {
+          result.push(properties.stringify(_.deepToFlat(JSON.parse(content))));
+        });
+      }
 
       // Write the destination file.
-      grunt.file.write(f.dest, src);
+      grunt.file.write(f.dest, result.join('\n'));
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      grunt.log.writeln('File "' + f.dest + '" modified.');
     });
   });
 

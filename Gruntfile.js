@@ -31,19 +31,8 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     json_to_properties: {
       default_options: {
-        options: {
-        },
         files: {
           'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
         },
       },
     },
